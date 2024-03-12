@@ -1,0 +1,120 @@
+#portfolio {
+  margin-bottom: 3rem;
+
+  .container{
+    
+    // width: 100%;
+    margin-left: 150px;
+
+    .row{
+      width: 100%;
+      display: flex;
+    }
+  }
+
+  h1 {
+    @include h1;
+  }
+
+  // .embedded-website {
+  //   width: calc(400% * 0.65);
+  //   height:  calc(350% * 0.27 );
+  //   // height: calc(500px * 0.5); /* Adjust the scaling factor as needed */
+  //   transform: scale(0.5); /* Adjust the scaling factor as needed */
+  //   transform-origin: top left;
+  //   border-radius: 15px;
+
+  // }
+
+  .project {
+    width: 600px;
+    height: 300px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    &:hover {
+      .details {
+        clip-path: circle(141.1% at 0 0);
+      }
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .details {
+      width: 100%;
+      height: 100%;
+      @include transition;
+      background-color: rgba($color: #000000, $alpha: 0.4);
+      color: white;
+      clip-path: circle(0% at 0 0);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+
+      p {
+        padding-left: 2%;
+        padding-right: 2%;
+
+        @include media($bp-lg) {
+          font-size: 1.5rem;
+        }
+      }
+
+      .links_project {
+        width: 20%;
+        font-size: 1.5rem;
+        @include mx-auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // z-index: 10000;
+
+        a {
+          text-decoration: none;
+
+          i {
+            color: white;
+            @include transition;
+
+            &:hover {
+              color: var(--bs-accent);
+            }
+          }
+        }
+      }
+
+      .technology {
+        min-width: 50%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -10;
+        // filter: blur(20px);
+        @include mx-auto;
+
+        .row{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        img {
+          width: 2rem;
+          display: block;
+        }
+      }
+    }
+  }
+  
+  // .embedded-website::-webkit-scrollbar {
+  //   display: none; /* Hide the scrollbar */
+  // }
+}
