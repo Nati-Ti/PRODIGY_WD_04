@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Typed from 'typed.js'; 
 import './Hero.css';
+import logo from '../../img/Logo.png';
+import smallLogo from '../../img/logo2.png';
 
 function Hero() {
   const typedRef = useRef(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const typedElement = typedRef.current;
@@ -22,10 +25,31 @@ function Hero() {
     };
   }, []);
 
+  const handleScroll = () => {
+    if (window.scrollY > 200) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  
   return (
+    <>
+      {window.innerWidth < 768 ? (
+        <img className='logo_img2' src={smallLogo} alt="Small Logo" />
+      ) : (
+        <div className={isScrolled ? 'fixed_bar' : ''}>
+          <img className='logo_img' src={logo} alt="Logo" />
+        </div>
+      )}
+
     <section id="hero" className="d-flex flex-column justify-content-center">
+      
       <div className="container" data-aos="zoom-in" data-aos-delay={100}>
-        <h1>Natnael Tibebu</h1>
+
+        <h1>Natnael T. Workneh</h1>
         <p>
           I'm{' '}
           <span
@@ -56,6 +80,8 @@ function Hero() {
         </div>
       </div>
     </section>
+    </>
+    
   );
 }
 

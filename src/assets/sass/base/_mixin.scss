@@ -19,6 +19,12 @@
   margin-right: auto;
 }
 
+@mixin media($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
 // heading
 @mixin h1 {
   @include font-secondary;
@@ -27,7 +33,6 @@
   font-size: 2.5rem;
 }
 
-// === media queries ===
 // breakpoints variables
 $bp-sm: map-get($grid-breakpoints, sm);
 $bp-md: map-get($grid-breakpoints, md);
@@ -35,8 +40,4 @@ $bp-lg: map-get($grid-breakpoints, lg);
 $bp-xl: map-get($grid-breakpoints, xl);
 $bp-xxl: map-get($grid-breakpoints, xxl);
 
-@mixin media($width) {
-  @media screen and (min-width: $width) {
-    @content;
-  }
-}
+

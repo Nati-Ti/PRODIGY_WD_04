@@ -5,13 +5,13 @@ function Footer() {
   return (
     <footer id="footer">
       <div className="container">
-        <h3>Natnael Tibebu</h3>
+        <h3>Natnael T. Workneh</h3>
         <p>
           "Thank you! for taking the time to visit my portfolio website and learn
           more about me. <br /> If you're interested in working together, please
           don't hesitate to contact me."
         </p>
-        <div className="social-links">
+        <div className="social-links mb-3">
           <a
             href="https://www.linkedin.com/in/natnaeltibebu/"
             target="_blank"
@@ -36,19 +36,8 @@ function Footer() {
             <i className="bx bxl-whatsapp" />
           </a>
         </div>
-        <div className="copyright">
-          © Copyright.{" "}
-          <strong>
-            <span />
-          </strong>{" "}
-          All Rights Reserved
-        </div>
-        <div className="credits">
-          {/* All the links in the footer should remain intact. */}
-          {/* You can delete the links only if you purchased the pro version. */}
-          {/* Licensing information: [license-url] */}
-          {/* Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ */}
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <div className="Username">
+          <strong>@Nati-Ti</strong>
         </div>
       </div>
     </footer>

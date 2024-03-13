@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import emailjs from 'emailjs-com';
 
 function Contact() {
+
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -23,33 +25,43 @@ function Contact() {
     setSubmitting(true);
 
     try {
-      const response = await fetch('/forms/contact.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formState)
+      await sendEmail(event);
+      setSuccess(true);
+      setError('');
+      setFormState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
       });
-
-      if (response.ok) {
-        setSuccess(true);
-        setError('');
-        setFormState({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-      } else {
-        setSuccess(false);
-        setError('Failed to send message. Please try again later.');
-      }
     } catch (error) {
       setSuccess(false);
       setError('Failed to send message. Please try again later.');
+      setFormState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
     }
 
     setSubmitting(false);
+  };
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    await emailjs
+      .sendForm(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, e.target, process.env.REACT_APP_EMAILJS_USER_ID)
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          throw new Error('Failed to send email');
+        }
+      );
   };
 
   return (
@@ -58,8 +70,8 @@ function Contact() {
         <div className="section-title">
           <h2>Contact</h2>
         </div>
-        <div className="row mt-1">
-          <div className="col-lg-4">
+        <div className="row mt-1 align-items-start">
+          <div className="col-lg-4 mt-lg-0">
             <div className="info">
               <div className="address">
                 <i className="bi bi-geo-alt" />
@@ -78,13 +90,10 @@ function Contact() {
               </div>
             </div>
           </div>
-          <div className="col-lg-8 mt-5 mt-lg-0">
-            <form
-              onSubmit={handleSubmit}
-              className="php-email-form"
-            >
-              <div className="row">
-                <div className="col-md-6 form-group">
+          <div className="col-lg-8 mt-5 mt-lg-0 ">
+            <form onSubmit={handleSubmit} className="php-email-form">
+              <div className="row m-0">
+                <div className="col-md-6 form-group mt-md-0">
                   <input
                     type="text"
                     name="name"
@@ -96,7 +105,7 @@ function Contact() {
                     required
                   />
                 </div>
-                <div className="col-md-6 form-group mt-3 mt-md-0">
+                <div className="col-md-6 form-group mt-md-0">
                   <input
                     type="email"
                     className="form-control"
@@ -137,7 +146,7 @@ function Contact() {
                 {error && <div className="error-message">{error}</div>}
                 {success && <div className="sent-message">Your message has been sent. Thank you!</div>}
               </div>
-              <div className="text-center">
+              <div className="d-flex justify-content-end">
                 <button type="submit">Send Message</button>
               </div>
             </form>

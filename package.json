@@ -12,6 +12,8 @@
   "dependencies": {
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.5",
+    "emailjs-com": "^3.2.0",
     "glightbox": "^3.2.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.7.1",

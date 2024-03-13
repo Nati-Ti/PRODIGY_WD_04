@@ -1,6 +1,6 @@
 import './App.css'
 import Contact from './assets/components/Contact/Contact'
-import Facts from './assets/components/Facts/Facts'
+// import Facts from './assets/components/Facts/Facts'
 import Footer from './assets/components/Footer/Footer'
 import Header from './assets/components/Header/Header'
 import Hero from './assets/components/Hero/Hero'
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <i className="bi bi-list mobile-nav-toggle d-lg-none" />
+      
       <Header/>
       <Hero/>
       {/* <Facts/> */}

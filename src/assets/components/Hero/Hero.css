@@ -7,6 +7,32 @@
   z-index: 1;
 }
 
+.fixed_bar{
+  position: fixed;
+  background-color: #fcfcfc;
+  height: 70px;
+  width: 100%;
+  z-index: 1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo_img{
+  margin: 10px 0px 0px 150px;
+  /* height: 100px; */
+  width: 400px;
+  position: fixed;
+  z-index: 2;
+}
+
+.logo_img2{
+  height: 50px;
+  margin: 10px 0px 0px 20px;
+  position: fixed;
+  z-index: 2;
+}
+
 @media (min-width: 992px) {
   #hero {
     padding-left: 160px;
